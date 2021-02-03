@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Конвертер валют</title>
+    </head>
+    <body>
+
+        <form method="post">
+            <input type="number" step="0.01" name="input" placeholder="Ввод" maxlength="30">
+
+            <select id="idSelect1" name="concurrency1" size="1">
+                <option th:each="el: ${exRatList}" th:text="${el.id}" class="alert alert-info"></option>
+            </select><br>
+
+            <output type="text" maxlength="10" th:text="${nameOutput}" id="idOutputText1"> = Вывод</output>
+
+            <select id="idSelect2" name="concurrency2" size="1">
+                <option th:each="el: ${exRatList}" th:text="${el.id}" class="alert alert-info"></option>
+            </select><br><br>
+
+            <button value="convert" name="action">Конвертировать валюту</button><br><br><br>
+            <button value="clean" name="action">Отчистить историю конвертаций</button><br><br><br>
+
+            <input type="text" name="keyword" placeholder="Поиск по истории" id="idInputSearch">
+            <button value="search" name="action">Поиск</button><br>
+
+            <label for="idList1">История конвертаций</label>
+            <ol id="idList1">
+                <li th:each="el: ${hConList}" th:text="${el.historyRec}" class="alert alert-info"></li>
+            </ol>
+        </form>
+    </body>
+</html>
